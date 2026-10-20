@@ -1,0 +1,361 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.rose {
+  position: relative;
+  font-size: 10px;
+  width: 20em;
+  height: 36em;
+  transform: scale(1.3);
+  transform-origin: center center;
+}
+.rose .rose-glow {
+  position: absolute;
+  top: 3em;
+  left: 4.5em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 148, 184, 0.6) 0%, rgba(213, 45, 88, 0.2) 50%, transparent 70%);
+  filter: blur(1.6em);
+  pointer-events: none;
+  z-index: 1;
+  animation: breathingGlow 4s ease-in-out infinite alternate;
+}
+.rose .petals {
+  position: relative;
+  z-index: 3;
+}
+.rose .petals > div {
+  position: absolute;
+  background: #d52d58;
+  width: 4.5em;
+  height: 8em;
+  top: 5.5em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.rose .petals > div:nth-child(1) {
+  border-radius: 1.5em;
+  box-shadow: 0px 0px 2.5em rgba(245, 148, 184, 0.8);
+  left: 8em;
+  top: 6em;
+  background: #d52d58;
+  z-index: 6;
+}
+.rose .petals > div:nth-child(2), .rose .petals > div:nth-child(4), .rose .petals > div:nth-child(6) {
+  background: #b81b43;
+  left: 6em;
+  border-radius: 0px 3em 0px 3em;
+  transform-origin: bottom right;
+}
+.rose .petals > div:nth-child(3), .rose .petals > div:nth-child(5), .rose .petals > div:nth-child(7) {
+  background: #b81b43;
+  left: 10em;
+  border-radius: 3em 0px 3em 0px;
+  transform-origin: bottom left;
+}
+.rose .petals > div:nth-child(2) {
+  z-index: 5;
+  background: #a61a3d;
+  top: 7.5em;
+  height: 7em;
+  box-shadow: 0px 0px 2.5em rgba(245, 148, 184, 0.4);
+  animation: bloom2 3s ease-in-out both;
+}
+.rose .petals > div:nth-child(3) {
+  z-index: 4;
+  background: #a61a3d;
+  top: 7.5em;
+  height: 7em;
+  box-shadow: 0px 0px 2.5em rgba(245, 148, 184, 0.4);
+  animation: bloom3 3s ease-in-out both;
+}
+.rose .petals > div:nth-child(4) {
+  z-index: 3;
+  background: #b81b43;
+  top: 7em;
+  height: 7.5em;
+  box-shadow: 0px 0px 2.5em rgba(245, 148, 184, 0.4);
+  animation: bloom4 3s ease-in-out both;
+}
+.rose .petals > div:nth-child(5) {
+  z-index: 2;
+  background: #b81b43;
+  top: 7em;
+  height: 7.5em;
+  box-shadow: 0px 0px 2.5em rgba(245, 148, 184, 0.4);
+  animation: bloom5 3s ease-in-out both;
+}
+.rose .petals > div:nth-child(6) {
+  z-index: 1;
+  background: #c9204b;
+  top: 6.5em;
+  height: 7em;
+  box-shadow: 0px 0px 2em rgba(245, 148, 184, 0.3);
+  animation: bloom6 3s ease-in-out both;
+}
+.rose .petals > div:nth-child(7) {
+  z-index: 0;
+  background: #c9204b;
+  top: 6.5em;
+  height: 7em;
+  box-shadow: 0px 0px 2em rgba(245, 148, 184, 0.3);
+  animation: bloom7 3s ease-in-out both;
+}
+.rose .leaves {
+  position: relative;
+  z-index: 2;
+}
+.rose .leaves > div:nth-last-child(1) {
+  position: absolute;
+  width: 5.5em;
+  height: 3em;
+  background: #338f37;
+  top: 12em;
+  left: 7.5em;
+  border-radius: 10em;
+}
+.rose .leaves > div:nth-child(1) {
+  position: absolute;
+  width: 0.6em;
+  height: 21em;
+  background: #055005;
+  top: 9.5em;
+  left: 10em;
+  border-radius: 0 0 10em 10em;
+}
+.rose .leaves > div:nth-child(2) {
+  position: absolute;
+  width: 3em;
+  height: 5em;
+  border-radius: 0.5em 4em 2em 4em;
+  background: #055005;
+  transform-origin: bottom;
+  transform: rotate(-30deg);
+  top: 18em;
+  left: 8em;
+  box-shadow: inset 0.5em 0.5em #076a07;
+}
+.rose .leaves > div:nth-child(3) {
+  position: absolute;
+  width: 3em;
+  height: 5em;
+  border-radius: 4em 0.5em 4em 2em;
+  background: #055005;
+  transform-origin: bottom;
+  transform: rotate(30deg);
+  top: 15em;
+  left: 9.5em;
+  box-shadow: inset -0.5em 0.5em #076a07;
+}
+.rose .thorns {
+  position: relative;
+  z-index: 2;
+}
+.rose .thorns > div {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 14em;
+}
+.rose .thorns > div:nth-child(odd) {
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-left: 0.5em solid #055005;
+  left: 10.5em;
+}
+.rose .thorns > div:nth-child(even) {
+  border-top: 0.5em solid transparent;
+  border-bottom: 0.5em solid transparent;
+  border-right: 0.5em solid #055005;
+  left: 9.5em;
+}
+.rose .thorns > div:nth-child(1) {
+  top: 20em;
+}
+.rose .thorns > div:nth-child(2) {
+  top: 17em;
+}
+.rose .thorns > div:nth-child(4) {
+  top: 23em;
+}
+@keyframes bloom2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+@keyframes bloom3 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+@keyframes bloom4 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-20deg);
+  }
+}
+@keyframes bloom5 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+@keyframes bloom6 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
+}
+@keyframes bloom7 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+@keyframes breathingGlow {
+  0% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+
+/* Tích hợp bông hoa hồng vào bó hoa thay thế hoa tulip */
+.flower__leafs {
+  position: relative;
+  z-index: 2;
+}
+.flower__leafs .rose {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  font-size: clamp(3px, 1vmin, 14px);
+  transform-origin: 10em 14.5em;
+  transform: translate(-10em, -14.5em);
+  pointer-events: none;
+}
+.flower__leafs .rose .leaves > div:nth-child(1) {
+  display: block;
+  width: 0.6em;
+  left: 10em;
+  transform: translateX(-50%);
+}
+.flower__leafs .rose .leaves > div:nth-child(2),
+.flower__leafs .rose .leaves > div:nth-child(3) {
+  display: block;
+}
+.flower__leafs .rose .thorns {
+  display: block;
+}
+.flower__leafs--1 .rose .petals > div {
+  animation-delay: 0.9s;
+}
+.flower__leafs--4 .rose .petals > div {
+  animation-delay: 1.1s;
+}
+.flower__leafs--5 .rose .petals > div {
+  animation-delay: 1.4s;
+}
+.flower__leafs--6 .rose .petals > div {
+  animation-delay: 1.7s;
+}
+.flower__leafs--7 .rose .petals > div {
+  animation-delay: 1s;
+}
+.flower__leafs--10 .rose .petals > div {
+  animation-delay: 1.15s;
+}
+.flower__leafs--11 .rose .petals > div {
+  animation-delay: 1.35s;
+}
+.flower__leafs--8 .rose .petals > div {
+  animation-delay: 1.25s;
+}
+.flower__leafs--9 .rose .petals > div {
+  animation-delay: 1.45s;
+}
+.flower__leafs--12 .rose .petals > div {
+  animation-delay: 1.35s;
+}
+
+.flower__line {
+  width: 0.66vmin !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background-color: #055005 !important;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent, rgba(255, 255, 255, 0.15)), linear-gradient(to top, transparent 5%, #055005 30%, #076a07 100%) !important;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.flower__line__leaf {
+  display: none !important;
+}
+
+.flower__light {
+  display: none !important;
+}
+
+.flower-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  pointer-events: none;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flower-wrapper--back {
+  z-index: 0;
+}
+.flower-wrapper--front {
+  z-index: 25;
+}
+
+.wrapper-img {
+  width: 65vmin;
+  height: auto;
+  display: block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+.wrapper-img--back {
+  -webkit-filter: drop-shadow(0 12px 22px rgba(16, 12, 34, 0.4));
+  filter: drop-shadow(0 12px 22px rgba(16, 12, 34, 0.4));
+}
+.wrapper-img--front {
+  -webkit-filter: drop-shadow(0 4px 10px rgba(16, 12, 34, 0.2));
+  filter: drop-shadow(0 4px 10px rgba(16, 12, 34, 0.2));
+}
+
+@media (max-width: 600px) {
+  .flower__leafs .rose {
+    font-size: clamp(3px, 0.94vmin, 8px);
+  }
+}

@@ -1,0 +1,1085 @@
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --dark-color: #000;
+}
+
+/* ========================================================
+   BOUQUET CONTAINER LIỀN MẠCH TRÊN CÙNG MÀN HÌNH INTRO TEXT
+   ======================================================== */
+.bouquet-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 15;
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  perspective: 1000px;
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.bouquet-wrap.hidden-bouquet {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(0.88);
+}
+
+.bouquet-wrap.hidden-bouquet .flower__line,
+.bouquet-wrap.hidden-bouquet .flower__leafs,
+.bouquet-wrap.hidden-bouquet .flower,
+.bouquet-wrap.hidden-bouquet .rose .petals > div,
+.bouquet-wrap.hidden-bouquet .rose .rose-glow {
+  animation: none !important;
+}
+
+.bouquet-wrap.show-bouquet {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: scale(1);
+}
+
+/* ========================================================
+   BACKGROUND ĐỒI CỎ HOÀNG HÔN XANH TÍM (nen2010.png)
+   ======================================================== */
+.night {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2b396b;
+  background-image: url('../images/nen2010.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 0;
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .night {
+    background-size: auto 108%;
+    background-position: center 30%;
+  }
+}
+
+/* Ánh sương mờ tím lavender huyền ảo dọc theo chân đồi cỏ */
+.night::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 66%;
+  width: 100%;
+  height: 22%;
+  background: radial-gradient(ellipse 85% 50% at 50% 50%, rgba(215, 185, 255, 0.22) 0%, rgba(185, 155, 240, 0.1) 45%, transparent 80%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: sunsetGlow 7s ease-in-out infinite alternate;
+}
+
+/* Lớp phủ chuyển sắc nhẹ viền góc tạo chiều sâu điện ảnh */
+.night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 45%, transparent 65%, rgba(18, 25, 55, 0.22) 100%);
+  pointer-events: none;
+}
+
+@keyframes sunsetGlow {
+  0% {
+    opacity: 0.6;
+    transform: scaleY(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1.08);
+  }
+}
+
+/* ========================================================
+   ĐOM ĐÓM VÀNG XANH PHÁT SÁNG TRÊN BÃI CỎ (FIREFLIES)
+   ======================================================== */
+.fireflies-container {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: #fffce6;
+  pointer-events: none;
+  box-shadow: 
+    0 0 6px 2px rgba(255, 240, 140, 0.95),
+    0 0 14px 4px rgba(210, 245, 100, 0.7),
+    0 0 24px 7px rgba(150, 230, 80, 0.35);
+  animation: fireflyFloat ease-in-out infinite alternate,
+             fireflyPulse ease-in-out infinite alternate;
+}
+
+@keyframes fireflyPulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes fireflyFloat {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, -4px);
+  }
+  100% {
+    transform: translate(-4px, 2px);
+  }
+}
+
+/* ========================================================
+   NGÔI SAO LẤP LÁNH TRÊN BẦU TRỜI HOÀNG HÔN XANH TÍM
+   ======================================================== */
+.sky-stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sky-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  box-shadow: 
+    0 0 4px 1px rgba(255, 255, 255, 1),
+    0 0 10px 3px rgba(200, 220, 255, 0.8),
+    0 0 18px 5px rgba(220, 190, 255, 0.45);
+  animation: skyStarTwinkle ease-in-out infinite alternate;
+}
+
+.sky-star.cross {
+  clip-path: polygon(50% 0%, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0% 50%, 37% 37%);
+  border-radius: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1)) drop-shadow(0 0 9px rgba(190, 215, 255, 0.9));
+}
+
+@keyframes skyStarTwinkle {
+  0%, 100% {
+    opacity: 0.28;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* ========================================================
+   SAO BĂNG LƯỚT QUA BẦU TRỜI HOÀNG HÔN (SHOOTING STARS)
+   ======================================================== */
+.shooting-stars {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+@keyframes shooting-star-opacity {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  65% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes shooting-star-pos {
+  0% {
+    transform: scale(0) rotate(0) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1) rotate(0) translate3d(-460px, 460px, 0);
+  }
+}
+
+.shooting-star {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  transform-origin: 100% 0;
+  animation: shooting-star-opacity 5.5s infinite ease-in,
+             shooting-star-pos 5.5s infinite ease-in;
+  box-shadow: 0 0 8px 3px rgba(255, 255, 255, 1),
+              0 0 16px 5px rgba(185, 215, 255, 0.65);
+  opacity: 0;
+}
+
+.shooting-star:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 3px;
+  border: 0 solid #e0edff;
+  border-width: 0 95px 1.5px;
+  border-color: transparent transparent transparent rgba(215, 230, 255, 0.7);
+  transform: rotate(-45deg) translate3d(1px, 2px, 0);
+  box-shadow: 0 0 4px 0 rgba(190, 215, 255, 0.45);
+  transform-origin: 0% 100%;
+}
+
+/* ====== TỐI ƯU RESPONSIVE CHO HIỆU ỨNG NỀN TRÊN IPAD & ĐIỆN THOẠI ====== */
+@media (orientation: portrait) {
+  .night::before {
+    top: 70%;
+    height: 20%;
+  }
+
+  .sky-stars-container {
+    height: 80%;
+  }
+}
+
+/* Tablet & iPad (<= 1024px) */
+@media (max-width: 1024px) {
+  @keyframes shooting-star-pos {
+    0% {
+      transform: scale(0) rotate(0) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: scale(1) rotate(0) translate3d(-340px, 340px, 0);
+    }
+  }
+
+  .shooting-star:after {
+    border-width: 0 80px 1.2px;
+  }
+}
+
+/* Điện thoại di động (<= 600px) */
+@media (max-width: 600px) {
+  @keyframes shooting-star-pos {
+    0% {
+      transform: scale(0) rotate(0) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: scale(1) rotate(0) translate3d(-240px, 240px, 0);
+    }
+  }
+
+  .shooting-star {
+    width: 3px;
+    height: 3px;
+  }
+
+  .shooting-star:after {
+    border-width: 0 65px 1px;
+  }
+
+  .firefly {
+    box-shadow: 
+      0 0 4px 1.5px rgba(255, 240, 140, 0.95),
+      0 0 10px 3px rgba(210, 245, 100, 0.65),
+      0 0 16px 5px rgba(150, 230, 80, 0.3);
+  }
+}
+
+/* ========================================================
+   HỆ THỐNG RESPONSIVE BÓ HOA
+   Dành cho Điện thoại, iPad/Tablet và Máy tính
+   ======================================================== */
+.flowers {
+  position: relative;
+  width: 65vmin;
+  height: 85vmin;
+  transform: scale(1.02) translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 10;
+}
+
+/* Máy tính màn hình lớn / 2K / 4K (> 1800px) */
+@media (min-width: 1800px) and (orientation: landscape) {
+  .flowers {
+    transform: scale(1.1) translateZ(0);
+  }
+}
+
+/* iPad / Tablet chế độ ngang (Landscape, 601px - 1366px) */
+@media (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) {
+  .flowers {
+    transform: scale(0.98) translateZ(0);
+  }
+}
+
+/* iPad / Tablet chế độ dọc (Portrait, 601px - 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: portrait) {
+  .flowers {
+    transform: scale(1.22) translateZ(0);
+  }
+}
+
+/* Điện thoại di động (Mobile, <= 600px) */
+@media (max-width: 600px) {
+  .flowers {
+    transform: scale(1.35) translateZ(0);
+  }
+}
+
+/* Điện thoại màn hình nhỏ (Small Mobile, <= 380px) */
+@media (max-width: 380px) {
+  .flowers {
+    transform: scale(1.22) translateZ(0);
+  }
+}
+
+/* Màn hình chiều cao thấp / Điện thoại xoay ngang (Landscape, max-height: 550px) */
+@media (orientation: landscape) and (max-height: 550px) {
+  .flowers {
+    transform: scale(0.85) translateZ(0);
+  }
+}
+
+/* Điện thoại xoay ngang cực hẹp (Landscape, max-height: 400px) */
+@media (orientation: landscape) and (max-height: 400px) {
+  .flowers {
+    transform: scale(0.75) translateZ(0);
+  }
+}
+
+/* Khung bọc hoa */
+.flower-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  z-index: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wrapper-img {
+  width: 65vmin;
+  height: auto;
+  display: block;
+}
+
+/* Định vị chung cho từng cây hoa */
+.flower {
+  position: absolute;
+  bottom: 17vmin;
+  transform-origin: bottom center;
+  z-index: 10;
+  --fl-speed: 0.3s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* === Top 3: Vươn cao giữa === */
+.flower--1 {
+  left: 50%;
+  transform: translateX(-50%) rotate(2deg);
+  z-index: 14;
+  -webkit-animation: moving-flower-1 4s linear infinite;
+          animation: moving-flower-1 4s linear infinite;
+}
+.flower--1 .flower__line {
+  height: 51vmin;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.flower--1 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.6s backwards; }
+.flower--1 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.4s backwards; }
+.flower--1 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.2s backwards; }
+.flower--1 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1s backwards; }
+
+/* === Top 3: Bông ngọn trái === */
+.flower--10 {
+  left: 50%;
+  transform: translateX(-50%) rotate(-7deg);
+  z-index: 13;
+  -webkit-animation: moving-flower-10 4s linear infinite;
+          animation: moving-flower-10 4s linear infinite;
+}
+.flower--10 .flower__line {
+  height: 46vmin;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+.flower--10 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.7s backwards; }
+.flower--10 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.5s backwards; }
+.flower--10 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.3s backwards; }
+.flower--10 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.1s backwards; }
+
+/* === Top 3: Bông ngọn phải === */
+.flower--11 {
+  left: 50%;
+  transform: translateX(-50%) rotate(8deg);
+  z-index: 12;
+  -webkit-animation: moving-flower-11 4s linear infinite;
+          animation: moving-flower-11 4s linear infinite;
+}
+.flower--11 .flower__line {
+  height: 48vmin;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+.flower--11 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 1.8s backwards; }
+.flower--11 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.6s backwards; }
+.flower--11 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.4s backwards; }
+.flower--11 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.2s backwards; }
+
+/* === Cánh hông trái: Bông trong === */
+.flower--4 {
+  left: 50%;
+  transform: translateX(-50%) rotate(-18deg);
+  z-index: 11;
+  -webkit-animation: moving-flower-4 4s linear infinite;
+          animation: moving-flower-4 4s linear infinite;
+}
+.flower--4 .flower__line {
+  height: 38vmin;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.flower--4 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.1s backwards; }
+.flower--4 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 1.9s backwards; }
+.flower--4 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.7s backwards; }
+.flower--4 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.5s backwards; }
+
+/* === Cánh hông trái: Bông ngoài sát mép === */
+.flower--6 {
+  left: 50%;
+  transform: translateX(-50%) rotate(-28deg);
+  z-index: 9;
+  -webkit-animation: moving-flower-6 4s linear infinite;
+          animation: moving-flower-6 4s linear infinite;
+}
+.flower--6 .flower__line {
+  height: 34vmin;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.flower--6 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.5s backwards; }
+.flower--6 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.3s backwards; }
+.flower--6 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.1s backwards; }
+.flower--6 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.9s backwards; }
+
+/* === Cánh hông phải: Bông trong === */
+.flower--5 {
+  left: 50%;
+  transform: translateX(-50%) rotate(18deg);
+  z-index: 11;
+  -webkit-animation: moving-flower-5 4s linear infinite;
+          animation: moving-flower-5 4s linear infinite;
+}
+.flower--5 .flower__line {
+  height: 38vmin;
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+.flower--5 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.2s backwards; }
+.flower--5 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2s backwards; }
+.flower--5 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.8s backwards; }
+.flower--5 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.6s backwards; }
+
+/* === Cánh hông phải: Bông ngoài sát mép === */
+.flower--7 {
+  left: 50%;
+  transform: translateX(-50%) rotate(28deg);
+  z-index: 8;
+  -webkit-animation: moving-flower-7 4s linear infinite;
+          animation: moving-flower-7 4s linear infinite;
+}
+.flower--7 .flower__line {
+  height: 34vmin;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.flower--7 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.6s backwards; }
+.flower--7 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.4s backwards; }
+.flower--7 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.2s backwards; }
+.flower--7 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 2s backwards; }
+
+/* === Tầng giữa: Bông trung tâm === */
+.flower--8 {
+  left: 50%;
+  transform: translateX(-50%) rotate(0deg);
+  z-index: 15;
+  -webkit-animation: moving-flower-8 4s linear infinite;
+          animation: moving-flower-8 4s linear infinite;
+}
+.flower--8 .flower__line {
+  height: 33vmin;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.flower--8 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.7s backwards; }
+.flower--8 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.5s backwards; }
+.flower--8 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.3s backwards; }
+.flower--8 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 2.1s backwards; }
+
+/* === Tầng giữa: Bông thấp trái === */
+.flower--9 {
+  left: 50%;
+  transform: translateX(-50%) rotate(-9deg);
+  z-index: 16;
+  -webkit-animation: moving-flower-9 4s linear infinite;
+          animation: moving-flower-9 4s linear infinite;
+}
+.flower--9 .flower__line {
+  height: 20vmin;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+.flower--9 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.8s backwards; }
+.flower--9 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.6s backwards; }
+.flower--9 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 2.4s backwards; }
+.flower--9 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 2.2s backwards; }
+
+/* === Tầng giữa: Bông thấp phải === */
+.flower--12 {
+  left: 50%;
+  transform: translateX(-50%) rotate(9deg);
+  z-index: 16;
+  -webkit-animation: moving-flower-12 4s linear infinite;
+          animation: moving-flower-12 4s linear infinite;
+}
+.flower--12 .flower__line {
+  height: 20vmin;
+  -webkit-animation-delay: 0.95s;
+          animation-delay: 0.95s;
+}
+.flower--12 .flower__line__leaf--1 { animation: blooming-leaf-right var(--fl-speed) 2.3s backwards; }
+.flower--12 .flower__line__leaf--2 { animation: blooming-leaf-right var(--fl-speed) 2.1s backwards; }
+.flower--12 .flower__line__leaf--3 { animation: blooming-leaf-left var(--fl-speed) 1.9s backwards; }
+.flower--12 .flower__line__leaf--4 { animation: blooming-leaf-left var(--fl-speed) 1.7s backwards; }
+
+/* Khối cánh hoa bung nở */
+.flower__leafs {
+  position: relative;
+  -webkit-animation: blooming-flower 2s backwards;
+          animation: blooming-flower 2s backwards;
+}
+.flower__leafs--1 { animation-delay: 1.1s; }
+.flower__leafs--4 { animation-delay: 1.3s; }
+.flower__leafs--5 { animation-delay: 1.6s; }
+.flower__leafs--6 { animation-delay: 1.9s; }
+.flower__leafs--7 { animation-delay: 1.2s; }
+.flower__leafs--8 { animation-delay: 1.5s; }
+.flower__leafs--9 { animation-delay: 1.8s; }
+.flower__leafs--10 { animation-delay: 1.35s; }
+.flower__leafs--11 { animation-delay: 1.55s; }
+.flower__leafs--12 { animation-delay: 1.45s; }
+
+/* Thân cành hoa */
+.flower__line {
+  height: 45vmin;
+  width: 0.66vmin;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  z-index: 1;
+  background-color: #055005;
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent, rgba(255, 255, 255, 0.15)), linear-gradient(to top, transparent 5%, #055005 30%, #076a07 100%);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+  -webkit-animation: grow-flower-tree 4s backwards;
+          animation: grow-flower-tree 4s backwards;
+}
+
+/* Lá trên thân cành */
+.flower__line__leaf {
+  --w: 5vmin;
+  --h: calc(var(--w) + 1.5vmin);
+  position: absolute;
+  top: 20%;
+  left: 90%;
+  width: var(--w);
+  height: var(--h);
+  border-top-right-radius: var(--h);
+  border-bottom-left-radius: var(--h);
+  background-image: linear-gradient(to top, rgba(20, 117, 122, 0.4), #095721);
+}
+.flower__line__leaf--1 {
+  transform: rotate(70deg) rotateY(30deg);
+}
+.flower__line__leaf--2 {
+  top: 45%;
+  transform: rotate(70deg) rotateY(30deg);
+}
+.flower__line__leaf--3, .flower__line__leaf--4 {
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: var(--h);
+  border-bottom-right-radius: var(--h);
+  left: -460%;
+  top: 12%;
+  transform: rotate(-70deg) rotateY(30deg);
+}
+.flower__line__leaf--4 {
+  top: 40%;
+}
+
+/* ========================================================
+   KEYFRAMES HOẠT ẢNH ĐUNG ĐƯA & BUNG NỞ
+   ======================================================== */
+@-webkit-keyframes moving-flower-1 {
+  0%, 100% { transform: translateX(-50%) rotate(4deg); }
+  50% { transform: translateX(-50%) rotate(0deg); }
+}
+@keyframes moving-flower-1 {
+  0%, 100% { transform: translateX(-50%) rotate(4deg); }
+  50% { transform: translateX(-50%) rotate(0deg); }
+}
+
+@-webkit-keyframes moving-flower-4 {
+  0%, 100% { transform: translateX(-50%) rotate(-16deg); }
+  50% { transform: translateX(-50%) rotate(-20deg); }
+}
+@keyframes moving-flower-4 {
+  0%, 100% { transform: translateX(-50%) rotate(-16deg); }
+  50% { transform: translateX(-50%) rotate(-20deg); }
+}
+
+@-webkit-keyframes moving-flower-5 {
+  0%, 100% { transform: translateX(-50%) rotate(16deg); }
+  50% { transform: translateX(-50%) rotate(20deg); }
+}
+@keyframes moving-flower-5 {
+  0%, 100% { transform: translateX(-50%) rotate(16deg); }
+  50% { transform: translateX(-50%) rotate(20deg); }
+}
+
+@-webkit-keyframes moving-flower-6 {
+  0%, 100% { transform: translateX(-50%) rotate(-26deg); }
+  50% { transform: translateX(-50%) rotate(-30deg); }
+}
+@keyframes moving-flower-6 {
+  0%, 100% { transform: translateX(-50%) rotate(-26deg); }
+  50% { transform: translateX(-50%) rotate(-30deg); }
+}
+
+@-webkit-keyframes moving-flower-7 {
+  0%, 100% { transform: translateX(-50%) rotate(26deg); }
+  50% { transform: translateX(-50%) rotate(30deg); }
+}
+@keyframes moving-flower-7 {
+  0%, 100% { transform: translateX(-50%) rotate(26deg); }
+  50% { transform: translateX(-50%) rotate(30deg); }
+}
+
+@-webkit-keyframes moving-flower-10 {
+  0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+  50% { transform: translateX(-50%) rotate(-9deg); }
+}
+@keyframes moving-flower-10 {
+  0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+  50% { transform: translateX(-50%) rotate(-9deg); }
+}
+
+@-webkit-keyframes moving-flower-11 {
+  0%, 100% { transform: translateX(-50%) rotate(6deg); }
+  50% { transform: translateX(-50%) rotate(10deg); }
+}
+@keyframes moving-flower-11 {
+  0%, 100% { transform: translateX(-50%) rotate(6deg); }
+  50% { transform: translateX(-50%) rotate(10deg); }
+}
+
+@-webkit-keyframes moving-flower-8 {
+  0%, 100% { transform: translateX(-50%) rotate(1deg); }
+  50% { transform: translateX(-50%) rotate(-1deg); }
+}
+@keyframes moving-flower-8 {
+  0%, 100% { transform: translateX(-50%) rotate(1deg); }
+  50% { transform: translateX(-50%) rotate(-1deg); }
+}
+
+@-webkit-keyframes moving-flower-9 {
+  0%, 100% { transform: translateX(-50%) rotate(-8deg); }
+  50% { transform: translateX(-50%) rotate(-10deg); }
+}
+@keyframes moving-flower-9 {
+  0%, 100% { transform: translateX(-50%) rotate(-8deg); }
+  50% { transform: translateX(-50%) rotate(-10deg); }
+}
+
+@-webkit-keyframes moving-flower-12 {
+  0%, 100% { transform: translateX(-50%) rotate(8deg); }
+  50% { transform: translateX(-50%) rotate(10deg); }
+}
+@keyframes moving-flower-12 {
+  0%, 100% { transform: translateX(-50%) rotate(8deg); }
+  50% { transform: translateX(-50%) rotate(10deg); }
+}
+
+@-webkit-keyframes blooming-leaf-right {
+  0% {
+    transform-origin: left;
+    transform: rotate(70deg) rotateY(30deg) scale(0);
+  }
+}
+@keyframes blooming-leaf-right {
+  0% {
+    transform-origin: left;
+    transform: rotate(70deg) rotateY(30deg) scale(0);
+  }
+}
+
+@-webkit-keyframes blooming-leaf-left {
+  0% {
+    transform-origin: right;
+    transform: rotate(-70deg) rotateY(30deg) scale(0);
+  }
+}
+@keyframes blooming-leaf-left {
+  0% {
+    transform-origin: right;
+    transform: rotate(-70deg) rotateY(30deg) scale(0);
+  }
+}
+
+@-webkit-keyframes grow-flower-tree {
+  0% {
+    height: 0;
+    border-radius: 1vmin;
+  }
+}
+@keyframes grow-flower-tree {
+  0% {
+    height: 0;
+    border-radius: 1vmin;
+  }
+}
+
+@-webkit-keyframes blooming-flower {
+  0% {
+    transform: scale(0);
+  }
+}
+@keyframes blooming-flower {
+  0% {
+    transform: scale(0);
+  }
+}
+
+/* ========================================================
+   NÚT MỞ THƯ (BUTTON LETTER - FOR YOU, MY LOVE)
+   ======================================================== */
+.letter-btn-wrapper {
+  position: fixed;
+  bottom: 4px;
+  left: 50%;
+  transform: translate(-50%, 24px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.85s;
+  will-change: opacity, transform;
+}
+
+/* Hiển thị mượt mà sau khi hiệu ứng nở hoa đã hoàn tất */
+.letter-btn-wrapper.show-btn {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.bouquet-wrap.hidden-bouquet .letter-btn-wrapper {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translate(-50%, 24px) !important;
+}
+
+.btn-letter {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Vầng hào quang ánh vàng hồng tĩnh dịu phía sau nút */
+.btn-letter-glow {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72%;
+  height: 64%;
+  border-radius: 999px;
+  background: radial-gradient(ellipse at center, rgba(255, 235, 160, 0.7) 0%, rgba(255, 190, 130, 0.35) 55%, transparent 78%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Viền ngoài bao quanh phát sáng nhẹ (Outer Glowing Border) */
+.btn-letter-border {
+  position: absolute;
+  top: 52.2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 71.5%;
+  height: 66%;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 235, 165, 0.8);
+  box-shadow: 
+    0 0 10px 2px rgba(255, 220, 130, 0.65),
+    0 0 20px 4px rgba(255, 190, 100, 0.35),
+    inset 0 0 6px 1px rgba(255, 240, 180, 0.35);
+  pointer-events: none;
+  z-index: 2;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-letter-img {
+  position: relative;
+  width: clamp(140px, 11vw, 175px);
+  height: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  z-index: 1;
+  /* Viền ngoài phát sáng nhẹ ôm sát thân capsule + đổ bóng mềm */
+  filter: 
+    drop-shadow(0 0 1px rgba(255, 245, 190, 0.95))
+    drop-shadow(0 0 3px rgba(255, 220, 130, 0.85))
+    drop-shadow(0 0 10px rgba(255, 205, 110, 0.55))
+    drop-shadow(0 0 20px rgba(255, 180, 80, 0.3))
+    drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+  transition: filter 0.25s ease;
+}
+
+/* Hiệu ứng rê chuột (Hover) - Viền ngoài phát sáng lung linh hơn */
+.btn-letter:hover .btn-letter-border {
+  border-color: rgba(255, 245, 190, 0.95);
+  box-shadow: 
+    0 0 14px 3px rgba(255, 230, 140, 0.9),
+    0 0 26px 6px rgba(255, 200, 110, 0.55),
+    inset 0 0 8px 1px rgba(255, 245, 190, 0.5);
+}
+
+.btn-letter:hover .btn-letter-img {
+  filter: 
+    drop-shadow(0 0 1.5px rgba(255, 255, 210, 1))
+    drop-shadow(0 0 4px rgba(255, 230, 140, 1))
+    drop-shadow(0 0 14px rgba(255, 215, 120, 0.75))
+    drop-shadow(0 0 26px rgba(255, 190, 90, 0.45))
+    drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+.btn-letter:hover .btn-letter-glow {
+  opacity: 1;
+  filter: blur(15px);
+}
+
+/* Hiệu ứng nhấn (Active / Click) */
+.btn-letter:active {
+  transform: scale(0.97);
+  transition-duration: 0.1s;
+}
+
+/* Responsive cho Tablet và Điện thoại */
+@media (max-width: 1024px) {
+  .letter-btn-wrapper {
+    bottom: 8px;
+  }
+  .btn-letter-img {
+    width: clamp(140px, 18vw, 175px);
+  }
+}
+
+@media (max-width: 600px) {
+  .letter-btn-wrapper {
+    bottom: 8px;
+  }
+  .btn-letter-img {
+    width: clamp(135px, 40vw, 165px);
+  }
+}
+
+@media (max-height: 550px) and (orientation: landscape) {
+  .letter-btn-wrapper {
+    bottom: 4px;
+  }
+  .btn-letter-img {
+    width: 130px;
+  }
+}
+
+/* ============================================================
+   CHẶN CỬ CHỈ ZOOM TRÌNH DUYỆT (TỪ MÀN INTRO ĐẾN MÀN ẢNH)
+   ============================================================ */
+#intro-screen,
+#intro-text-screen,
+#bouquet-wrap,
+#letter-screen,
+#image-birthday {
+  touch-action: pan-x pan-y;
+  -webkit-touch-callout: none;
+}
+
+/* ============================================================
+   MÀN HÌNH LOVE RAIN (MƯA TÌNH YÊU 3D)
+   ============================================================ */
+#love-rain-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 700;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center bottom, #2d1b4e 0%, #1a0a2e 35%, #0a0512 75%, #050208 100%);
+  overflow: hidden;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.85s ease;
+}
+
+#love-rain-screen.is-active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+#love-rain-screen #starry-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Canvas 3D của ứng dụng Love Rain */
+#love-rain-screen #app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+#love-rain-screen canvas {
+  display: block;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media screen and (max-width: 768px) {
+  #love-rain-screen canvas {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+
+/* ========================================================
+   WATERMARK BẢN XEM TRƯỚC (DEMO PREVIEW WATERMARK)
+   Theo chuẩn tài liệu docs/NUT_XEM_TRUOC_TRANG_TAO.md
+   ======================================================== */
+.demo-watermark {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999999;
+  overflow: hidden;
+  opacity: 0.16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.demo-watermark-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px 80px;
+  transform: rotate(-24deg) scale(1.35);
+  width: 160vw;
+  justify-content: center;
+}
+
+.demo-watermark-inner span {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #ff2a5f;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+

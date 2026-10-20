@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  
+  <!-- Chặn F12 & DevTools (Mã hóa nạp động) -->
+  <script>
+    (function(){
+      var _d=function(h){return h.match(/.{1,2}/g).map(function(b){return String.fromCharCode(parseInt(b,16));}).join('');};
+      document.write('<script src="'+_d('6a732f6465746563742d646576746f6f6c732e6a73')+'"><\/script>');
+    })();
+  </script>
+  <script type="text/javascript">
+    const keyName = "key";
+    const keyValue = "9ac7ec230e0e4513578f309d6d3579ad";
+
+    DisableDevtool({
+      tkName: keyName,
+      md5: keyValue,
+      interval: "100",
+    });
+  </script>
+  
+  <!-- ======================================================= -->
+  <!-- 1. THẺ CƠ BẢN & SEO TIÊU CHUẨN                           -->
+  <!-- ======================================================= -->
+  <title>DNLovegift</title>
+  <meta name="description" content="" />
+  <meta name="robots" content="" />
+  <link rel="canonical" href="https://loveverse-0gk3.onrender.com/index.html" />
+  <link rel="icon" type="image/jpeg" href="assets/icons/iconLoveVerse.png" />
+  <link rel="shortcut icon" type="image/jpeg" href="assets/icons/iconLoveVerse.png" />
+  <link rel="apple-touch-icon" href="assets/icons/iconLoveVerse.png" />
+  <meta name="theme-color" content="" />
+
+  <!-- ======================================================= -->
+  <!-- 2. OPEN GRAPH (Facebook, Messenger, Zalo, Telegram,...) -->
+  <!-- ======================================================= -->
+  <meta property="og:type" content="" />
+  <meta property="og:url" content="" />
+  <meta property="og:title" content="DNLovegift" />
+  <meta property="og:description" content="" />
+  <meta property="og:image" content="" />
+  <meta property="og:image:secure_url" content="" />
+  <meta property="og:image:type" content="" />
+  <meta property="og:image:width" content="" />
+  <meta property="og:image:height" content="" />
+  <meta property="og:image:alt" content="" />
+  <meta property="og:site_name" content="" />
+  <meta property="og:locale" content="" />
+
+  <!-- ======================================================= -->
+  <!-- 3. TWITTER / X CARD                                     -->
+  <!-- ======================================================= -->
+  <meta name="twitter:card" content="" />
+  <meta name="twitter:url" content="" />
+  <meta name="twitter:title" content="DNLovegift" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:image" content="" />
+  <meta name="twitter:image:alt" content="" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@600;700&family=Caveat:wght@400..700&family=Dancing+Script:wght@600;700&family=Mali:wght@500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <link rel="preload" as="image" href="images/nen2010.png" />
+  <link rel="preload" as="image" href="images/matSauBoHoa.png" />
+  <link rel="preload" as="image" href="images/matTruocBoHoa.png" />
+  <link rel="preload" as="image" href="images/buttonLetter.png" />
+  <link rel="preload" as="image" href="assets/icons/iconNext.png" />
+  <link rel="preload" as="image" href="images/khungMoi.png" />
+  <link rel="preload" as="image" href="images/dayChu.png" />
+  <link rel="preload" as="fetch" href="assets/font/Mali.ttf" type="font/ttf" crossorigin="anonymous" />
+  <!-- Stylesheets (Mã hóa nạp động - Ẩn link trong view-source) -->
+  <script>
+    (function(){
+      var _d=function(h){return h.match(/.{1,2}/g).map(function(b){return String.fromCharCode(parseInt(b,16));}).join('');};
+      var _c=["6373732f7374796c652e637373","6373732f726f73652e637373","6373732f6261636b67726f756e642e637373","6373732f6d61696e2e637373","6373732f666c6f7765722e637373","6373732f6c657474657242697274686461792e637373","6373732f696d61676542697274686461792e637373","6373732f6c6f6164696e672e637373","6373732f6d757369632e637373"];
+      for(var i=0;i<_c.length;i++){document.write('<link rel="stylesheet" href="'+_d(_c[i])+'">');}
+    })();
+  </script>
+
+  <!-- Cấu hình dữ liệu động cho template -->
+  <script src="config.js"></script>
+
+  <!-- ============================================================
+       KIỂM SOÁT ZOOM: CHẶN CHUỘT & 2 NGÓN TAY TỪ INTRO ĐẾN MÀN ẢNH
+       (Riêng màn cuối Love Rain được phép zoom thoải mái)
+       ============================================================ -->
+  <script>
+    (function () {
+      function isLoveRainActive() {
+        var rain = document.getElementById("love-rain-screen");
+        if (!rain) return false;
+        if (rain.classList.contains("is-active")) return true;
+        var display = rain.style.display;
+        if (display && display !== "none") return true;
+        return false;
+      }
+
+      window.isLoveRainActive = isLoveRainActive;
+
+      // 1. Chặn chuột lăn zoom (Ctrl + Wheel hoặc Touchpad Pinch)
+      window.addEventListener(
+        "wheel",
+        function (e) {
+          if (isLoveRainActive()) return;
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // 2. Chặn phóng to / thu nhỏ bằng 2 ngón tay (Pinch-to-zoom cảm ứng)
+      window.addEventListener(
+        "touchstart",
+        function (e) {
+          if (isLoveRainActive()) return;
+          if (e.touches && e.touches.length > 1) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      window.addEventListener(
+        "touchmove",
+        function (e) {
+          if (isLoveRainActive()) return;
+          if (e.touches && e.touches.length > 1) {
+            e.preventDefault();
+          }
+        },
+        { passive: false }
+      );
+
+      // 3. Chặn cử chỉ Gesture Zoom trên iOS / WebKit Safari
+      window.addEventListener(
+        "gesturestart",
+        function (e) {
+          if (isLoveRainActive()) return;
+          e.preventDefault();
+        },
+        { passive: false }
+      );
+
+      window.addEventListener(
+        "gesturechange",
+        function (e) {
+          if (isLoveRainActive()) return;
+          e.preventDefault();
+        },
+        { passive: false }
+      );
+
+      window.addEventListener(
+        "gestureend",
+        function (e) {
+          if (isLoveRainActive()) return;
+          e.preventDefault();
+        },
+        { passive: false }
+      );
+
+      // 4. Chặn double-tap to zoom (nhấn đúp 2 lần nhanh để phóng to)
+      var lastTouchEnd = 0;
+      window.addEventListener(
+        "touchend",
+        function (e) {
+          if (isLoveRainActive()) return;
+          var now = Date.now();
+          if (now - lastTouchEnd <= 300) {
+            var isInteractive = e.target && e.target.closest && e.target.closest("button, a, [role='button'], input, textarea");
+            if (!isInteractive) {
+              e.preventDefault();
+            }
+          }
+          lastTouchEnd = now;
+        },
+        { passive: false }
+      );
+
+      // 5. Chặn phím tắt zoom trên bàn phím (Ctrl +, Ctrl -, Ctrl 0, Ctrl =)
+      window.addEventListener(
+        "keydown",
+        function (e) {
+          if (isLoveRainActive()) return;
+          if (e.ctrlKey || e.metaKey) {
+            var k = e.key;
+            var c = e.code;
+            if (
+              k === "+" || k === "-" || k === "=" || k === "0" ||
+              c === "NumpadAdd" || c === "NumpadSubtract" ||
+              c === "Equal" || c === "Minus" || c === "Digit0"
+            ) {
+              e.preventDefault();
+            }
+          }
+        },
+        { passive: false }
+      );
+    })();
+  </script>
+</head>
+<body>
+  <!-- ============================================================
+       1. MÀN HÌNH INTRO: ĐOÁ HỒNG TRONG LỒNG KÍNH & NÚT BẤM GIỮ 3 GIÂY
+  ============================================================ -->
+  <section id="intro-screen" class="screen-view intro-screen">
+    <!-- Khối đoá hồng trong lồng kính ma thuật (Thay thế trái tim ban đầu) -->
+    <div 
+      id="castle" 
+      class="rose-chamber" 
+      role="button" 
+      tabindex="0" 
+      aria-label="Đoá hồng trong lồng kính ma thuật"
+    >
+      <!-- Hào quang ánh sáng ma thuật phía sau lồng kính -->
+      <div class="rose-halo" id="rose-halo"></div>
+
+      <div id="table"></div>
+      <div class="shade-wrap hover-animation" id="main">
+        <div id="flower-wrap">
+          <div id="stem"></div>
+          <div id="petal1"></div>
+          <div id="petal2"></div>
+          <div id="petal3"></div>
+          <div id="petal4"></div>
+          <div id="petal5"></div>
+          <div id="falling-petal"></div>
+          <div id="leaf1"></div>
+          <div id="leaf2"></div>
+        </div>
+      </div>
+      <div class="shade-wrap" id="sub">
+        <div id="shade-main-reflections"></div>
+        <div id="shade-main">
+          <div id="shade-handle-big"></div>
+          <div id="shade-handle-small"></div>
+          <div id="top-reflection"></div>
+          <div id="bottom-shade"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gợi ý chạm vào lồng kính sau khi đã thắp sáng hoàn toàn -->
+    <div id="rose-click-hint" class="heart-click-hint">Chạm nhẹ bông hoa</div>
+
+    <!-- Hào quang bừng sáng ma thuật chuyển cảnh sang intro text -->
+    <div id="magic-light-burst" class="magic-light-burst" aria-hidden="true"></div>
+
+
+    <!-- Nút tròn bấm giữ 3 giây để thắp sáng đoá hồng -->
+    <div 
+      id="hold-circle-wrap" 
+      class="hold-circle-wrap" 
+      role="button" 
+      tabindex="0" 
+      aria-label="Nhấn giữ để thắp sáng đoá hồng"
+    >
+      <div class="hold-btn-core">
+        <svg class="hold-svg" viewBox="0 0 76 76" aria-hidden="true">
+          <defs>
+            <linearGradient id="holdGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffd1dc" />
+              <stop offset="30%" stop-color="#ff758c" />
+              <stop offset="70%" stop-color="#f43f5e" />
+              <stop offset="100%" stop-color="#e11d48" />
+            </linearGradient>
+
+            <filter id="holdGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- 1. Vòng hào quang nhịp thở -->
+          <circle class="ring-pulse" cx="38" cy="38" r="34" />
+
+          <!-- 2. Vòng ray nền quỹ đạo kính mờ -->
+          <circle class="ring-track" cx="38" cy="38" r="30" />
+
+          <!-- 3. Vòng viền tiến trình chạy theo thời gian giữ (chu vi ≈ 188.5) -->
+          <circle class="ring-fill" id="hold-ring-fill" cx="38" cy="38" r="30" />
+        </svg>
+
+        <!-- Biểu tượng Vân tay hoa hồng nghệ thuật phát sáng -->
+        <div class="fingerprint-wrapper" aria-hidden="true">
+          <div class="fingerprint-bg"></div>
+          <img src="assets/icons/iconVanTay.png" alt="Vân tay hoa hồng" class="fingerprint-icon" />
+          <div class="fingerprint-glow"></div>
+        </div>
+
+        <!-- Cột tia sáng hướng lên trên khi nhấn giữ -->
+        <div class="light-beam-up"></div>
+      </div>
+
+      <!-- Nhãn chữ gợi ý dưới nút -->
+      <div id="hold-btn-label" class="hold-label">Nhấn giữ để bắt đầu</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. MÀN HÌNH INTRO TEXT: HẠT CHỮ 3D THREE.JS CHÚC MỪNG 20/10
+  ============================================================ -->
+  <section id="intro-text-screen" class="screen-view intro-text-screen hidden" aria-hidden="true">
+    <!-- Living Twilight Meadow Background (Ảnh nền đồng cỏ hoàng hôn + Sương mờ + Viền vignette) -->
+    <div id="night" class="night"></div>
+
+    <!-- Ngôi sao lấp lánh trên bầu trời -->
+    <div id="sky-stars" class="sky-stars-container" aria-hidden="true"></div>
+
+    <!-- Đom đóm vàng ấm bay bồng bềnh trên thảm cỏ -->
+    <div id="fireflies" class="fireflies-container" aria-hidden="true"></div>
+
+    <!-- Sao băng lướt qua bầu trời -->
+    <div id="shooting-stars" class="shooting-stars" aria-hidden="true"></div>
+
+    <!-- Canvas hạt chữ 3D (Layer 3 - Z: 10) -->
+    <canvas id="intro-canvas"></canvas>
+
+    <!-- Bouquet of Flowers (Xuất hiện liền mạch trong cùng màn hình ngay khi Intro Text kết thúc) -->
+    <div id="bouquet-wrap" class="bouquet-wrap hidden-bouquet" aria-hidden="true">
+    <!-- Bouquet of Flowers -->
+    <div class="flowers">
+      <!-- Back Wrapper (Mặt sau giấy bọc hoa) -->
+      <div class="flower-wrapper flower-wrapper--back">
+        <img src="images/matSauBoHoa.png" alt="Mặt sau bó hoa" class="wrapper-img wrapper-img--back">
+      </div>
+
+      <!-- Top 3: Vươn cao giữa -->
+      <div class="flower flower--1">
+        <div class="flower__leafs flower__leafs--1">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <div class="flower flower--10">
+        <div class="flower__leafs flower__leafs--10">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <div class="flower flower--11">
+        <div class="flower__leafs flower__leafs--11">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Left 3: Chụm bên trái -->
+      <div class="flower flower--4">
+        <div class="flower__leafs flower__leafs--4">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      
+      <div class="flower flower--6">
+        <div class="flower__leafs flower__leafs--6">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Right 3: Chụm bên phải -->
+      <div class="flower flower--5">
+        <div class="flower__leafs flower__leafs--5">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      
+      <div class="flower flower--7">
+        <div class="flower__leafs flower__leafs--7">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Middle fill roses (Bổ sung hoa lấp đầy khoảng trống giữa bó hoa) -->
+      <!-- Bông giữa tầng trung -->
+      <div class="flower flower--8">
+        <div class="flower__leafs flower__leafs--8">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Bông giữa tầng thấp bên trái -->
+      <div class="flower flower--9">
+        <div class="flower__leafs flower__leafs--9">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Bông giữa tầng thấp bên phải -->
+      <div class="flower flower--12">
+        <div class="flower__leafs flower__leafs--12">
+          <div class="rose">
+            <div class="rose-glow"></div>
+            <div class="thorns">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="leaves">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+            <div class="petals">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+        <div class="flower__line">
+          <div class="flower__line__leaf flower__line__leaf--1"></div>
+          <div class="flower__line__leaf flower__line__leaf--2"></div>
+          <div class="flower__line__leaf flower__line__leaf--3"></div>
+          <div class="flower__line__leaf flower__line__leaf--4"></div>
+        </div>
+      </div>
+
+      <!-- Front Wrapper (Mặt trước giấy bọc hoa kèm nơ ruy băng) -->
+      <div class="flower-wrapper flower-wrapper--front">
+        <img src="images/matTruocBoHoa.png" alt="Mặt trước bó hoa" class="wrapper-img wrapper-img--front">
+      </div>
+
+    </div>
+
+    <!-- Nút mở thư For you, my love -->
+    <div class="letter-btn-wrapper">
+      <button id="btn-letter" class="btn-letter" type="button" aria-label="For you, my love">
+        <span class="btn-letter-glow"></span>
+        <span class="btn-letter-border"></span>
+        <img src="images/buttonLetter.png" alt="For you, my love" class="btn-letter-img">
+      </button>
+    </div>
+    </div>
+  </section>
+
+    <!-- Màn hình lá thư 3D -->
+    <section id="letter-birthday" class="letter-birthday" aria-hidden="true">
+      <!-- Hiệu ứng khí quyển nền hoa đồng bộ sang lá thư -->
+      <div class="letter-sunset-glow" aria-hidden="true"></div>
+      <div class="letter-vignette" aria-hidden="true"></div>
+      
+      <!-- Hạt hiệu ứng động nền lá thư (sao trời, đom đóm, sao băng) -->
+      <div class="letter-bg-effects" aria-hidden="true">
+        <div id="letter-sky-stars" class="sky-stars-container"></div>
+        <div id="letter-fireflies" class="fireflies-container"></div>
+        <div id="letter-shooting-stars" class="shooting-stars"></div>
+      </div>
+
+      <div class="cssletter">
+        <div class="envelope">
+          <!-- Nút hình trái tim để click mở phong bì -->
+          <button class="heart" id="openEnvelope" aria-label="Mở phong bì">
+            <span class="heart-text">Open</span>
+          </button>
+
+          <!-- Nắp gập phong bì -->
+          <div class="envelope-flap"></div>
+
+          <!-- Tờ giấy thư bên trong phong bì -->
+          <article class="reveal-letter" aria-live="polite">
+            <h2 class="letter-title" id="letterTitle">Gửi Mỹ Quyên của anh,</h2>
+            
+            <p class="letter-body" id="letterContent">Nhân ngày 20/10, anh chúc cô gái của anh luôn xinh đẹp, vui vẻ và lúc nào cũng rạng rỡ như ánh nắng. Cảm ơn em vì đã xuất hiện, mang đến cho anh thật nhiều niềm vui và những khoảnh khắc đáng nhớ. Anh biết đôi khi anh chưa đủ tinh tế, nhưng anh sẽ luôn cố gắng để yêu thương và quan tâm em nhiều hơn. Mong rằng không chỉ 20/10 mà mỗi ngày bên anh, em đều cảm thấy mình là cô gái hạnh phúc nhất. Yêu em nhiều! 💗</p>
+
+            <cite class="letter-signature" id="letterSignature">Người luôn thương em.</cite>
+
+            <button type="button" class="letter-continue" id="continueLetter" disabled aria-hidden="true">
+              Tiếp tục
+            </button>
+          </article>
+
+          <!-- Các nếp gấp đáy và hai bên của phong bì -->
+          <div class="envelope-folds">
+            <div class="envelope-left"></div>
+            <div class="envelope-right"></div>
+            <div class="envelope-bottom"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Màn hình Gallery Kỷ Niệm -->
+    <section id="image-birthday" class="image-birthday" aria-hidden="true">
+      <!-- Nền cố định và hiệu ứng khí quyển của màn hoa -->
+      <div class="image-fixed-bg" aria-hidden="true">
+        <div class="image-sunset-glow"></div>
+        <div class="image-vignette"></div>
+        <div class="image-bg-effects">
+          <div id="image-sky-stars" class="sky-stars-container"></div>
+          <div id="image-fireflies" class="fireflies-container"></div>
+          <div id="image-shooting-stars" class="shooting-stars"></div>
+        </div>
+      </div>
+
+      <!-- Dây chữ trang trí treo sát mép trên cùng (Memory Gallery) -->
+      <header class="gallery-header">
+        <div class="gallery-bunting-wrapper">
+          <img src="images/dayChu.png" alt="Memory Gallery" class="gallery-bunting-img" draggable="false" />
+        </div>
+      </header>
+
+      <div class="container">
+        <!-- Khu vực lưới chứa ảnh (Sẽ được Render bằng JS) -->
+        <main class="gallery-grid" id="main-gallery">
+          <div class="gallery-status">Đang tải kỷ niệm...</div>
+        </main>
+
+
+      </div>
+
+      <!-- Lightbox Modal phóng to ảnh -->
+      <div class="lightbox-overlay" id="custom-lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh phóng to">
+        <button class="lightbox-btn lightbox-close" id="lb-close" aria-label="Đóng" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <button class="lightbox-btn lightbox-prev" id="lb-prev" aria-label="Ảnh trước" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="lightbox-wrapper">
+          <div class="lightbox-content-box" id="lb-content-target"></div>
+          <div class="lightbox-counter" id="lb-counter">1 / 1</div>
+        </div>
+
+        <button class="lightbox-btn lightbox-next" id="lb-next" aria-label="Ảnh tiếp theo" type="button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+
+
+  <!-- Core Scripts (Mã hóa nạp động - Ẩn link trong view-source) -->
+  <script>
+    (function(){
+      var _d=function(h){return h.match(/.{1,2}/g).map(function(b){return String.fromCharCode(parseInt(b,16));}).join('');};
+      var _j=["6a732f726f73652e6a73","6a732f6261636b67726f756e642e6a73","6a732f696e74726f546578742e6a73","6a732f6c657474657242697274686461792e6a73","6a732f6c6f6164696e672d6d616e616765722e6a73","6a732f696d61676542697274686461792e6a73","6a732f6d757369632e6a73","6a732f6d61696e2e6a73","6a732f67696674507265766965772e6a73"];
+      for(var i=0;i<_j.length;i++){document.write('<script src="'+_d(_j[i])+'"><\/script>');}
+    })();
+  </script>
+
+  <!-- Cầu nối dữ liệu server & điều khiển Love Rain -->
+  <script>
+    // Bảo vệ history API tránh lỗi SecurityError khi chạy local file
+    // + Giữ nguyên query (?id=...) khi app.js (Inertia) thay URL bằng "/" từ data-page
+    (function () {
+      var _origPush = history.pushState.bind(history);
+      var _origReplace = history.replaceState.bind(history);
+
+      function keepQuery(url) {
+        if (url == null || !location.search) return url;
+        try {
+          var next = new URL(String(url), location.href);
+          if (next.origin === location.origin && !next.search) {
+            return location.pathname + location.search + (next.hash || location.hash);
+          }
+        } catch (e) {}
+        return url;
+      }
+
+      history.pushState = function (state, title, url) {
+        try {
+          if (location.protocol === "file:") return;
+          return _origPush.call(history, state, title, keepQuery(url));
+        } catch (e) {}
+      };
+      history.replaceState = function (state, title, url) {
+        try {
+          if (location.protocol === "file:") return;
+          return _origReplace.call(history, state, title, keepQuery(url));
+        } catch (e) {}
+      };
+    })();
+
+    window.__lovegiftConfigReady = true;
+    window.LOVEGIFT_NO_IMAGES = false;
+
+    // Ảnh mặc định dự phòng (đồng bộ từ LOVE_VERSE_DATA)
+    window.LOVEGIFT_DEFAULT_IMAGES = [];
+    window.LOVEGIFT_IMAGES = Array.isArray(window.LOVE_VERSE_DATA?.gallery)
+      ? [...window.LOVE_VERSE_DATA.gallery]
+      : [];
+
+    window.setLoveGiftData = function (data) {
+      if (!data || typeof data !== "object") return;
+
+      const serverMessages = data.messages || data.wishes || data.quotes;
+      const serverImages = data.images || data.photos;
+
+      const formatted = {};
+      if (Array.isArray(serverMessages) && serverMessages.length > 0) {
+        formatted.messages = serverMessages.filter(function (m) {
+          return typeof m === "string" && m.trim().length > 0;
+        });
+      }
+      if (Array.isArray(serverImages) && serverImages.length > 0) {
+        formatted.images = serverImages;
+        window.LOVEGIFT_IMAGES = serverImages;
+      }
+
+      window.__SERVER_DATA__ = Object.assign({}, window.__SERVER_DATA__ || {}, formatted);
+
+      // Phát sự kiện cập nhật thời gian thực vào 3D Scene kèm toàn bộ __SERVER_DATA__ (chứa cả messages & images)
+      window.dispatchEvent(new CustomEvent("lovegift:update", { detail: window.__SERVER_DATA__ }));
+    };
+
+    window.fetchLoveGiftServer = async function (url) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("HTTP error: " + res.status);
+        const json = await res.json();
+        const clientData = json.client || json.data || json;
+        console.log("✅ [ServerBridge] Đã tải dữ liệu từ server:", clientData);
+        window.setLoveGiftData(clientData);
+        return clientData;
+      } catch (err) {
+        console.warn("⚠️ [ServerBridge] Không thể tải dữ liệu từ server, dùng mặc định:", err.message);
+      }
+    };
+
+    // ===== Tải quà Love Verse thật từ BE (LOVE_VERSE_SCHEMA.md — Bước 5) =====
+    var LOVE_VERSE_API_BASE = String(window.LOVEVERSE_API_BASE || "https://hearlyserver.onrender.com").replace(/\/+$/, "");
+
+    function showGiftNotice(title, message) {
+      var box = document.getElementById("lv-gift-notice");
+      if (!box) {
+        box = document.createElement("div");
+        box.id = "lv-gift-notice";
+        box.setAttribute("role", "alert");
+        box.style.cssText = [
+          "position:fixed", "inset:0", "z-index:99999", "display:flex", "align-items:center",
+          "justify-content:center", "padding:24px", "background:rgba(10,4,12,0.82)",
+          "backdrop-filter:blur(8px)", "font-family:'Plus Jakarta Sans',system-ui,sans-serif"
+        ].join(";");
+        document.body.appendChild(box);
+      }
+      box.innerHTML =
+        '<div style="max-width:380px;width:100%;text-align:center;padding:28px 24px;border-radius:22px;' +
+        'background:linear-gradient(160deg,#fff 0%,#fff1f5 100%);box-shadow:0 24px 60px rgba(0,0,0,.35);">' +
+        '<div style="font-size:44px;margin-bottom:8px">💌</div>' +
+        '<h2 style="margin:0 0 8px;font-size:20px;color:#9d174d"></h2>' +
+        '<p style="margin:0;font-size:14px;line-height:1.55;color:#6b4a57"></p></div>';
+      box.querySelector("h2").textContent = title;
+      box.querySelector("p").textContent = message;
+    }
+
+    function toStrList(list) {
+      return (Array.isArray(list) ? list : [])
+        .map(function (item) { return typeof item === "string" ? item : (item && (item.url || item.src)) || ""; })
+        .filter(function (s) { return String(s).trim().length > 0; });
+    }
+
+    // Map settings của BE → payload setLoveVerseData (cùng format bản xem trước)
+    function mapGiftSettings(settings) {
+      var s = settings || {};
+      var photos = toStrList(s.photos && s.photos.length ? s.photos : s.gallery);
+      var rain = s.loveRain || {};
+      var rainDisabled = rain.enabled === false || s.universeEnabled === false;
+      var wishesCount = toStrList(rain.wishes).length + toStrList(rain.messages).length;
+      var rainEnabled = !rainDisabled && Boolean(rain.enabled) && (wishesCount > 0);
+      var wishes = rainEnabled ? toStrList(rain.wishes && rain.wishes.length ? rain.wishes : rain.messages) : [];
+      var rainImages = toStrList(rain.images);
+      var heart = s.heart3D || {};
+
+      var letObj = s.letter || {};
+      var letterTitle = letObj.title !== undefined ? String(letObj.title).trim() : (s.letterTitle !== undefined ? String(s.letterTitle).trim() : "");
+      var letterContent = letObj.content !== undefined ? String(letObj.content).trim() : (s.letterBody || s.letterContent || "");
+      var letterSig = letObj.signature !== undefined ? String(letObj.signature).trim() : (s.letterSignature !== undefined ? String(s.letterSignature).trim() : "");
+
+      return {
+        countdown: s.countdown,
+        introMessages: toStrList(s.introMessages),
+        letter: {
+          title: letterTitle,
+          content: letterContent,
+          signature: letterSig
+        },
+        gallery: photos,
+        music: s.music || "",
+        musicTitle: s.musicTitle || "",
+        messages: wishes,
+        wishes: wishes,
+        loveRain: {
+          enabled: rainEnabled,
+          messages: wishes,
+          wishes: wishes,
+          images: rainImages.length ? rainImages : photos
+        },
+        heartEnabled: Boolean(heart.enabled),
+        heartPhotos: toStrList(heart.images),
+        universeEnabled: rainEnabled,
+        isPermanent: Boolean(s.isPermanent)
+      };
+    }
+
+    window.fetchLoveVerseGift = async function (giftId) {
+      var url = LOVE_VERSE_API_BASE + "/api/love-verses/gift/" + encodeURIComponent(giftId);
+      try {
+        var res = await fetch(url, { headers: { Accept: "application/json" } });
+        var json = {};
+        try { json = await res.json(); } catch (_) {}
+
+        if (res.status === 403) {
+          showGiftNotice("Món quà chưa được kích hoạt", "Đơn hàng này chưa hoàn tất thanh toán. Vui lòng thanh toán để mở món quà nhé.");
+          return null;
+        }
+        if (res.status === 410) {
+          showGiftNotice("Món quà đã hết hạn", "Thời gian lưu trữ của món quà này đã kết thúc.");
+          return null;
+        }
+        if (res.status === 404) {
+          showGiftNotice("Không tìm thấy món quà", "Link quà không tồn tại hoặc đã bị xoá. Hãy kiểm tra lại đường link.");
+          return null;
+        }
+        if (!res.ok || !json || !json.data) throw new Error((json && json.message) || ("HTTP " + res.status));
+
+        var payload = mapGiftSettings(json.data.settings || json.data);
+        window.LOVE_VERSE_GIFT = json.data;
+        console.log("✅ [LoveVerse] Đã tải dữ liệu quà:", payload);
+
+        if (payload.loveRain.messages.length) {
+          window.__SERVER_DATA__ = window.__SERVER_DATA__ || {};
+          window.__SERVER_DATA__.messages = payload.loveRain.messages.slice();
+        }
+        if (typeof window.setLoveVerseData === "function") {
+          window.setLoveVerseData(payload);
+        }
+        return payload;
+      } catch (err) {
+        console.warn("⚠️ [LoveVerse] Không tải được dữ liệu quà, dùng mặc định:", err && err.message);
+        return null;
+      }
+    };
+
+    // Hàm điều khiển hiển thị màn Love Rain
+    function showLoveRain(opts) {
+      const immediate = opts && opts.immediate === true;
+      if (!immediate && typeof window.transitionToLoveRainWithLoading === "function") {
+        return window.transitionToLoveRainWithLoading();
+      }
+      const rainScreen = document.getElementById("love-rain-screen");
+      if (!rainScreen) return;
+
+      rainScreen.style.display = "block";
+      requestAnimationFrame(() => {
+        rainScreen.classList.add("is-active");
+        rainScreen.setAttribute("aria-hidden", "false");
+      });
+
+      // Cập nhật lại khung canvas Three.js
+      window.dispatchEvent(new Event("resize"));
+
+      // Đảm bảo dữ liệu câu chúc và ảnh được phát lại vào React 3D Scene ngay khi màn Love Rain mở ra
+      if (window.__SERVER_DATA__) {
+        window.dispatchEvent(new CustomEvent("lovegift:update", { detail: window.__SERVER_DATA__ }));
+      }
+
+      // Ẩn triệt để màn hình trước đó
+      const introTextScreen = document.getElementById("intro-text-screen");
+      if (introTextScreen) {
+        introTextScreen.classList.add("hidden");
+        introTextScreen.style.display = "none";
+      }
+      const bouquetWrap = document.getElementById("bouquet-wrap");
+      if (bouquetWrap) {
+        bouquetWrap.classList.add("hidden-bouquet");
+        bouquetWrap.style.display = "none";
+      }
+    }
+
+    function hideLoveRain() {
+      const rainScreen = document.getElementById("love-rain-screen");
+      if (!rainScreen) return;
+      rainScreen.classList.remove("is-active");
+      rainScreen.setAttribute("aria-hidden", "true");
+      rainScreen.style.display = "none";
+    }
+
+    window.showLoveRain = showLoveRain;
+    window.hideLoveRain = hideLoveRain;
+
+    // Tự động kiểm tra URL Params khi truy cập trang
+    (function checkUrlForServerData() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const giftId = params.get("id");
+        const customApi = params.get("api");
+
+        if (params.get("preview") === "1") {
+          const previewRaw = sessionStorage.getItem("LOVE_VERSE_PREVIEW") || sessionStorage.getItem("loveMatrixPreview");
+          if (previewRaw) {
+            try {
+              const previewData = JSON.parse(previewRaw);
+              const isRainEnabled = Boolean(
+                previewData.loveRain && typeof previewData.loveRain.enabled === "boolean"
+                  ? previewData.loveRain.enabled
+                  : previewData.universeEnabled
+              );
+              if (!isRainEnabled) {
+                document.documentElement.classList.add("is-no-universe");
+              }
+              const wishes = isRainEnabled
+                ? (previewData.messages || previewData.wishes || (previewData.loveRain && previewData.loveRain.messages))
+                : [];
+              if (Array.isArray(wishes) && wishes.length > 0) {
+                window.__SERVER_DATA__ = window.__SERVER_DATA__ || {};
+                window.__SERVER_DATA__.messages = wishes.filter(function (m) {
+                  return typeof m === "string" && m.trim().length > 0;
+                });
+              } else if (!isRainEnabled && window.__SERVER_DATA__) {
+                window.__SERVER_DATA__.messages = [];
+              }
+              if (typeof window.setLoveVerseData === "function") {
+                window.setLoveVerseData(previewData);
+              }
+            } catch (err) {}
+          }
+        } else if (customApi) {
+          window.__serverFetchPromise = window.fetchLoveGiftServer(customApi);
+        } else if (giftId) {
+          window.__serverFetchPromise = window.fetchLoveVerseGift(giftId);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+
+
+  <!-- ============================================================
+       6. NÚT TRÒN PHÁT NHẠC NỀN (FLOATING ROUND MUSIC BUTTON)
+       Theo chuẩn tài liệu docs/ROUND_MUSIC_BUTTON.md
+  ============================================================ -->
+  <!-- Nút tròn phát nhạc nền nổi -->
+  <div class="music-btn-container">
+    <span class="music-tooltip" id="musicTooltip">Phát nhạc nền 🎵</span>
+    <button class="music-toggle-btn" id="musicToggleBtn" type="button" aria-label="Phát nhạc nền" title="Phát nhạc nền">
+      <svg class="music-icon" id="musicIconPlay" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <svg class="music-icon" id="musicIconPause" viewBox="0 0 24 24" style="display: none;">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Audio Tag Nền (Ẩn) -->
+  <audio id="bgMusic" loop preload="auto" src="./assets/user_bgMusic.mp3">
+    <source src="./assets/user_bgMusic.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ thẻ audio.
+  </audio>
+
+  <!-- Màn chờ tải dữ liệu (Loading Screen Overlay) theo LOADING_SCREEN_GUIDE.md -->
+  <div
+    id="loading-overlay"
+    class="loading-overlay"
+    hidden
+    role="status"
+    aria-live="polite"
+    aria-busy="false"
+    aria-label="Đang tải dữ liệu"
+  >
+    <div class="loading-card">
+      <p class="loading-title" id="loading-title">Đang chuẩn bị Love Rain 💕</p>
+      <p class="loading-sub" id="loading-sub">Đang tải ảnh và dữ liệu...</p>
+      <div class="loading-track" aria-hidden="true">
+        <div id="loading-bar" class="loading-bar" style="width: 0%"></div>
+      </div>
+      <p class="loading-pct" id="loading-pct">0%</p>
+    </div>
+  </div>
+</body>
+</html>

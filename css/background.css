@@ -1,0 +1,295 @@
+/* ========================================================
+   LIVING TWILIGHT MEADOW BACKGROUND & ATMOSPHERIC EFFECTS
+   LoveVerse - Nền Hoàng Hôn & Hiệu Ứng Khí Quyển Màn Intro Text
+   Kiến trúc phân tầng Z-Index Layering chuẩn từ BACKGROUND_GUIDE.md
+   ======================================================== */
+
+/* ========================================================
+   1. NỀN PHONG CẢNH VÀ HIỆU ỨNG KHÍ QUYỂN (LAYER 0)
+   ======================================================== */
+.night {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #2b396b; /* Màu fallback khi ảnh chưa tải xong */
+  background-image: url('../images/nen2010.png');
+  background-repeat: no-repeat;
+  background-position: center 35%;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .night {
+    background-size: auto 108%;
+    background-position: center 30%;
+  }
+}
+
+/* Ánh sương mờ tím lavender huyền ảo dọc theo chân đồi cỏ */
+.night::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 66%;
+  width: 100%;
+  height: 22%;
+  background: radial-gradient(
+    ellipse 85% 50% at 50% 50%,
+    rgba(215, 185, 255, 0.22) 0%,
+    rgba(185, 155, 240, 0.1) 45%,
+    transparent 80%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: sunsetGlow 7s ease-in-out infinite alternate;
+}
+
+/* Lớp phủ chuyển sắc nhẹ viền góc (Vignette điện ảnh) */
+.night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 45%,
+    transparent 65%,
+    rgba(18, 25, 55, 0.22) 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes sunsetGlow {
+  0% {
+    opacity: 0.6;
+    transform: scaleY(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1.08);
+  }
+}
+
+/* ========================================================
+   2. NGÔI SAO LẤP LÁNH BẦU TRỜI (LAYER 1)
+   ======================================================== */
+.sky-stars-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Sao tròn thông thường */
+.sky-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  box-shadow: 
+    0 0 4px 1px rgba(255, 255, 255, 1),
+    0 0 10px 3px rgba(200, 220, 255, 0.8),
+    0 0 18px 5px rgba(220, 190, 255, 0.45);
+  animation: skyStarTwinkle ease-in-out infinite alternate;
+}
+
+/* Sao chữ thập 4 cánh nghệ thuật */
+.sky-star.cross {
+  clip-path: polygon(
+    50% 0%, 
+    63% 37%, 
+    100% 50%, 
+    63% 63%, 
+    50% 100%, 
+    37% 63%, 
+    0% 50%, 
+    37% 37%
+  );
+  border-radius: 0;
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 1))
+         drop-shadow(0 0 9px rgba(190, 215, 255, 0.9));
+}
+
+@keyframes skyStarTwinkle {
+  0%, 100% {
+    opacity: 0.28;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+/* ========================================================
+   3. ĐOM ĐÓM BAY TRÊN ĐỒNG CỎ (LAYER 1)
+   ======================================================== */
+.fireflies-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.firefly {
+  position: absolute;
+  border-radius: 50%;
+  background: #fffce6;
+  pointer-events: none;
+  /* Hiệu ứng hào quang phát sáng 3 lớp màu vàng chanh ấm */
+  box-shadow: 
+    0 0 6px 2px rgba(255, 240, 140, 0.95),
+    0 0 14px 4px rgba(210, 245, 100, 0.7),
+    0 0 24px 7px rgba(150, 230, 80, 0.35);
+  animation: fireflyFloat ease-in-out infinite alternate,
+             fireflyPulse ease-in-out infinite alternate;
+}
+
+@keyframes fireflyPulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.75);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes fireflyFloat {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5px, -4px);
+  }
+  100% {
+    transform: translate(-4px, 2px);
+  }
+}
+
+/* ========================================================
+   4. SAO BĂNG LƯỚT QUA BẦU TRỜI (LAYER 2)
+   ======================================================== */
+.shooting-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shooting-star {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  transform-origin: 100% 0;
+  animation: shooting-star-opacity 5.5s infinite ease-in,
+             shooting-star-pos 5.5s infinite ease-in;
+  box-shadow: 0 0 8px 3px rgba(255, 255, 255, 1),
+              0 0 16px 5px rgba(185, 215, 255, 0.65);
+  opacity: 0;
+}
+
+/* Đuôi sao băng vát chéo 45 độ */
+.shooting-star:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 3px;
+  border: 0 solid #e0edff;
+  border-width: 0 95px 1.5px;
+  border-color: transparent transparent transparent rgba(215, 230, 255, 0.7);
+  transform: rotate(-45deg) translate3d(1px, 2px, 0);
+  box-shadow: 0 0 4px 0 rgba(190, 215, 255, 0.45);
+  transform-origin: 0% 100%;
+}
+
+@keyframes shooting-star-opacity {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  65% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes shooting-star-pos {
+  0% {
+    transform: scale(0) rotate(0) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1) rotate(0) translate3d(-460px, 460px, 0);
+  }
+}
+
+/* ========================================================
+   5. TỐI ƯU RESPONSIVE CHO THIẾT BỊ DI ĐỘNG & TABLET
+   ======================================================== */
+@media (orientation: portrait) {
+  .night::before {
+    top: 70%;
+    height: 20%;
+  }
+
+  .sky-stars-container {
+    height: 80%;
+  }
+}
+
+/* Tablet & iPad (<= 1024px) */
+@media (max-width: 1024px) {
+  @keyframes shooting-star-pos {
+    0% {
+      transform: scale(0) rotate(0) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: scale(1) rotate(0) translate3d(-340px, 340px, 0);
+    }
+  }
+
+  .shooting-star:after {
+    border-width: 0 80px 1.2px;
+  }
+}
+
+/* Điện thoại di động (<= 600px) */
+@media (max-width: 600px) {
+  @keyframes shooting-star-pos {
+    0% {
+      transform: scale(0) rotate(0) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: scale(1) rotate(0) translate3d(-240px, 240px, 0);
+    }
+  }
+
+  .shooting-star {
+    width: 3px;
+    height: 3px;
+  }
+
+  .shooting-star:after {
+    border-width: 0 65px 1px;
+  }
+
+  .firefly {
+    box-shadow: 
+      0 0 4px 1.5px rgba(255, 240, 140, 0.95),
+      0 0 10px 3px rgba(210, 245, 100, 0.65),
+      0 0 16px 5px rgba(150, 230, 80, 0.3);
+  }
+}
